@@ -3,6 +3,7 @@ import { redirect, notFound } from 'next/navigation'
 import Link from 'next/link'
 import { isAdmin } from '@/lib/authorized-admins'
 import ParticiparForm from './ParticiparForm'
+import ComprarMaisCotas from './ComprarMaisCotas'
 
 interface PageProps {
     params: Promise<{ id: string }>
@@ -209,6 +210,18 @@ export default async function BolaoPage({ params }: PageProps) {
                                         </div>
                                     </div>
                                 </div>
+
+                                {/* Botão para comprar mais cotas */}
+                                {bolao.status === 'aberto' && !isExpired && !isFull && (
+                                    <ComprarMaisCotas
+                                        bolaoId={bolao.id}
+                                        quotaValue={parseFloat(bolao.quota_value)}
+                                        maxQuotas={hasQuotaLimit ? (bolao.total_quotas || 100) : 100}
+                                        currentQuotas={participacao.quotas}
+                                        userId={user.id}
+                                        participacaoId={participacao.id}
+                                    />
+                                )}
                             </div>
                         ) : isClosed || isExpired ? (
                             <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-2xl p-6 text-center">

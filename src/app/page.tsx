@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import AtualizacoesHomepage from './components/AtualizacoesHomepage'
 
 export default function Home() {
   return (
@@ -99,6 +100,13 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Atualizações / Destaque IA */}
+      <section className="relative z-10 px-6 pb-12">
+        <div className="max-w-5xl mx-auto">
+          <AtualizacoesHomepage variant="landing" />
         </div>
       </section>
 

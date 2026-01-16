@@ -5,6 +5,7 @@ import LogoutButton from './LogoutButton'
 import { isAdmin } from '@/lib/authorized-admins'
 import EnquetesUserSection from './EnquetesUserSection'
 import ComentariosDominio from './ComentariosDominio'
+import AtualizacoesHomepage from '../components/AtualizacoesHomepage'
 
 export default async function DashboardPage() {
     const supabase = await createClient()
@@ -120,6 +121,11 @@ export default async function DashboardPage() {
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    {/* Box de Atualizações IA */}
+                    <div className="mb-8">
+                        <AtualizacoesHomepage variant="dashboard" />
                     </div>
 
                     {/* Active Pools Section */}
