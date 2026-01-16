@@ -193,12 +193,32 @@ RESUMO GERAL DO PROJETO - BOLÃO GFT
 - Vercel: Conta criada (andre-taharas-projects)
 
 ## PENDÊNCIAS
-1. ⏳ Instalar Git no Windows
-2. ⏳ Fazer push do código para GitHub
-3. ⏳ Configurar variáveis de ambiente na Vercel
-4. ⏳ Deploy em produção
+1. ✅ Instalar Git no Windows - CONCLUÍDO
+2. ✅ Fazer push do código para GitHub - CONCLUÍDO
+3. ✅ Configurar variáveis de ambiente na Vercel - CONCLUÍDO
+4. ✅ Deploy em produção - CONCLUÍDO!
+
+## 🎉 SITE ONLINE!
+URL: https://boloes-tahara.vercel.app
 
 ================================================================================
-FIM DO HISTÓRICO - Atualizado em 2026-01-16 01:26
+FIM DO HISTÓRICO - Atualizado em 2026-01-16 01:35
 ================================================================================
+
+---
+2026-01-16 01:35 - Interação #8
+USUÁRIO: Pediu para continuar sem reiniciar PC
+ASSISTENTE: Git foi instalado corretamente (v2.52.0). Usei caminho completo do executável para contornar problema de PATH:
+- Inicializei repositório local (git init)
+- Configurei user.email e user.name
+- Adicionei todos os 50 arquivos (git add .)
+- Fiz commit "MVP Bolao GFT - Interface Steve Jobs Edition"
+- Conectei ao repositório remoto (git remote add origin)
+- Push para GitHub com sucesso!
+- Importei projeto na Vercel
+- Configurei variáveis NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY
+- Cliquei Deploy
+- SUCESSO! Site online em https://boloes-tahara.vercel.app
+---
+
 

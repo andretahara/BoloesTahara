@@ -8,6 +8,7 @@ import EmailsAutorizadosManager from './EmailsAutorizadosManager'
 import CreateEnqueteForm from './CreateEnqueteForm'
 import EnquetesAdminList from './EnquetesAdminList'
 import ComentariosAdminPanel from './ComentariosAdminPanel'
+import AgentesIAManager from './AgentesIAManager'
 
 export default async function AdminPage() {
     const supabase = await createClient()
@@ -193,6 +194,11 @@ export default async function AdminPage() {
                     {/* Comentários Section */}
                     <div className="mt-8">
                         <ComentariosAdminPanel />
+                    </div>
+
+                    {/* Agentes de IA Section */}
+                    <div className="mt-8">
+                        <AgentesIAManager />
                     </div>
                 </div>
             </div>
