@@ -53,6 +53,12 @@ export default async function AdminPage() {
                         <span className="px-3 py-1 rounded-full bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 text-yellow-400 text-sm font-semibold">
                             Admin
                         </span>
+                        <Link
+                            href="/admin/logs"
+                            className="px-3 py-1 rounded-full bg-gray-700/50 border border-gray-600/30 text-gray-300 text-sm hover:bg-gray-600/50 transition-colors flex items-center gap-1"
+                        >
+                            📋 Logs
+                        </Link>
                     </div>
 
                     <div className="flex items-center gap-6">
