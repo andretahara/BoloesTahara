@@ -1,0 +1,204 @@
+# Histórico Completo - Bolão GFT
+# Gerado em: 2026-01-15 23:36
+# Este arquivo é atualizado manualmente ao longo das sessões.
+
+================================================================================
+SESSÃO: 15 de Janeiro de 2026
+================================================================================
+
+## OBJETIVO PRINCIPAL
+Desenvolver o MVP do sistema "Bolão GFT" - uma plataforma para bolões de loteria corporativos com funcionalidades de IA.
+
+## RESUMO DO QUE FOI FEITO
+
+### 1. CONFIGURAÇÃO INICIAL
+- Criado projeto Next.js com Tailwind CSS
+- Configurado Supabase como banco de dados e autenticação
+- Definida arquitetura de páginas e componentes
+
+### 2. SISTEMA DE AUTENTICAÇÃO
+- Páginas de Login e Registro criadas
+- Integração com Supabase Auth
+- Sistema de emails autorizados (whitelist) por domínio corporativo
+- Painel Admin restrito por email
+
+### 3. BOLÕES (FUNCIONALIDADE PRINCIPAL)
+- Tabela `boloes` no banco de dados
+- Tabela `participacoes` para registrar cotas compradas
+- Formulário de criação de bolões
+- Dashboard do usuário com bolões disponíveis
+- Página de detalhes do bolão com formulário de participação
+- Campo `total_quotas` agora é OPCIONAL (pode ser null para bolões sem limite)
+
+### 4. IMPORTAÇÃO DE EXTRATO BANCÁRIO COM IA
+- Tabela `transacoes_importadas` criada
+- API `/api/admin/bolao/[id]/import-csv` com análise por Google Gemini
+- Componentes: ImportExtratoButton, ImportExtratoModal, TransacoesImportadasList
+- Fallback para análise básica se IA não configurada
+
+### 5. SISTEMA DE ENQUETES (NOVO)
+- Tabela `enquetes` com suporte a domínios-alvo
+- Tabela `enquetes_respostas` para votos
+- Componentes criados:
+  - CreateEnqueteForm.tsx (admin)
+  - EnquetesAdminList.tsx (admin)
+  - EnquetesUserSection.tsx (usuário)
+- Admin pode direcionar enquetes para domínios específicos
+
+### 6. CAIXA DE SUGESTÕES/COMENTÁRIOS (NOVO)
+- Tabela `comentarios_dominio` (chat por domínio corporativo)
+- Tabela `config_dominios` (habilitar/bloquear chat)
+- API `/api/comentarios` com moderação por IA (Gemini)
+- Componentes criados:
+  - ComentariosDominio.tsx (usuário - chat)
+  - ComentariosAdminPanel.tsx (admin - moderação)
+- Limite de 140 caracteres por mensagem
+- Moderação automática por IA antes de publicar
+
+### 7. CORREÇÕES DE UI
+- Barra de progresso variável:
+  - Com limite de cotas: mostra % de cotas vendidas
+  - Sem limite de cotas: mostra % de tempo restante até deadline
+- Mensagem "Bolão lotado!" substituída por "Todas as cotas vendidas!"
+- Exibição "∞" e "Sem Limite" para bolões sem limite de cotas
+
+## ARQUIVOS PRINCIPAIS CRIADOS/MODIFICADOS
+
+### Componentes Admin:
+- src/app/admin/page.tsx
+- src/app/admin/CreateBolaoForm.tsx
+- src/app/admin/CreateEnqueteForm.tsx
+- src/app/admin/EnquetesAdminList.tsx
+- src/app/admin/ComentariosAdminPanel.tsx
+- src/app/admin/EmailsAutorizadosManager.tsx
+- src/app/admin/boloes/[id]/ImportExtratoButton.tsx
+- src/app/admin/boloes/[id]/ImportExtratoModal.tsx
+- src/app/admin/boloes/[id]/TransacoesImportadasList.tsx
+
+### Componentes Usuário:
+- src/app/dashboard/page.tsx
+- src/app/dashboard/EnquetesUserSection.tsx
+- src/app/dashboard/ComentariosDominio.tsx
+- src/app/boloes/[id]/page.tsx
+- src/app/boloes/[id]/ParticiparForm.tsx
+
+### APIs:
+- src/app/api/comentarios/route.ts (moderação IA)
+- src/app/api/admin/bolao/[id]/import-csv/route.ts (importação extrato)
+
+### Banco de Dados:
+- supabase-schema.sql (todas as tabelas e políticas RLS)
+
+## CONFIGURAÇÕES NECESSÁRIAS (.env.local)
+- NEXT_PUBLIC_SUPABASE_URL=https://remolktowlmqafxmlqko.supabase.co
+- NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+- GEMINI_API_KEY=... (opcional, para IA)
+
+## TESTES REALIZADOS
+- ✅ Login e Registro funcionando
+- ✅ Criação de bolões funcionando
+- ✅ Participação em bolões funcionando
+- ✅ Enquetes: criação e votação testadas
+- ✅ Chat de sugestões: envio e visualização testados
+- ✅ Painel admin: todas as seções visíveis
+
+## PRÓXIMOS PASSOS SUGERIDOS
+- Integrar pagamento real (PIX com gateway)
+- Sistema de notificações por email
+- Histórico de vencedores
+- Deploy em produção
+
+================================================================================
+FIM DA SESSÃO DE 15/01/2026
+================================================================================
+
+---
+2026-01-15 23:38 - Interação #1 (após workflow)
+USUÁRIO: Pediu para salvar todo o histórico de conversas automaticamente a cada interação
+ASSISTENTE: Criei arquivo tudoquefizemos.txt com resumo completo da sessão e criei workflow em .agent/workflows/atualizar-historico.md para garantir atualização automática
+ARQUIVOS: tudoquefizemos.txt, .agent/workflows/atualizar-historico.md
+---
+
+---
+2026-01-15 23:55 - Interação #2
+USUÁRIO: Pediu para repaginar a interface com estilo Paul Rand + Milton Glaser + Apple
+ASSISTENTE: Gerei mockup conceitual com cores de "ganância e urgência" (dourado, vermelho, verde dinheiro, preto luxuoso). Atualizei globals.css com nova paleta completa. Tentei substituição em lote das classes roxas por douradas.
+ARQUIVOS: src/app/globals.css, mockups gerados em brain/
+---
+
+---
+2026-01-16 00:10 - Interação #3
+USUÁRIO: Aprovou paleta e pediu refinamento "Steve Jobs" - qualidade Apple premium
+ASSISTENTE: Atualizei 15+ arquivos TSX para converter TODAS as cores roxas para dourado/amber. Criei script update-colors.ps1 para substituição em lote. Testei visual em todas as páginas principais.
+ARQUIVOS: page.tsx, login/page.tsx, registro/page.tsx, dashboard/page.tsx, dashboard/EnquetesUserSection.tsx, dashboard/ComentariosDominio.tsx, admin/page.tsx, admin/EnquetesAdminList.tsx, admin/EmailsAutorizadosManager.tsx, admin/CreateEnqueteForm.tsx, admin/CreateBolaoForm.tsx, admin/ComentariosAdminPanel.tsx, boloes/page.tsx, update-colors.ps1
+---
+
+---
+2026-01-16 00:25 - Interação #4
+USUÁRIO: Pediu próximos passos para ambiente de homologação
+ASSISTENTE: Expliquei o processo de deploy usando Vercel + GitHub. Abri página de cadastro da Vercel no navegador.
+DECISÕES: Escolhido Vercel por ser grátis e integrado com Next.js
+---
+
+---
+2026-01-16 00:40 - Interação #5
+USUÁRIO: Pediu ajuda no browser (leigo em tecnologia)
+ASSISTENTE: Descobri que usuário já tinha conta Vercel. Projeto Bolao_GFT apareceu na lista. Comecei processo de import, selecionei Next.js como framework, expandi seção Environment Variables.
+STATUS: Processo interrompido pelo usuário
+---
+
+---
+2026-01-16 01:21 - Interação #6
+USUÁRIO: Pediu para criar novo repositório no GitHub: "BoloesTahara"
+ASSISTENTE: Criei repositório público em https://github.com/andretahara/BoloesTahara
+PROBLEMA ENCONTRADO: Git não está instalado no computador do usuário (PowerShell não reconhece comando 'git')
+PROXIMOS PASSOS: Usuário precisa instalar Git de https://git-scm.com/download/win
+ARQUIVOS: Nenhum arquivo modificado, apenas criação de repo no GitHub
+---
+
+---
+2026-01-16 01:26 - Interação #7
+USUÁRIO: Pediu para salvar todo o histórico
+ASSISTENTE: Atualizando arquivo tudoquefizemos.txt com registro completo de todas as interações
+---
+
+================================================================================
+RESUMO GERAL DO PROJETO - BOLÃO GFT
+================================================================================
+
+## STACK TECNOLÓGICA
+- Frontend: Next.js 15 + React + TypeScript
+- Estilização: Tailwind CSS (paleta dourada/vermelha/preta luxuosa)
+- Backend: Next.js API Routes
+- Banco de Dados: Supabase (PostgreSQL)
+- Autenticação: Supabase Auth
+- IA: Google Gemini (moderação de chat + análise de extratos)
+- Hospedagem planejada: Vercel
+
+## FUNCIONALIDADES IMPLEMENTADAS
+1. ✅ Sistema de autenticação (login/registro)
+2. ✅ Dashboard do usuário
+3. ✅ Painel administrativo
+4. ✅ Criação e gerenciamento de bolões
+5. ✅ Participação em bolões com compra de cotas
+6. ✅ Sistema de enquetes direcionadas por domínio
+7. ✅ Chat/sugestões por domínio corporativo
+8. ✅ Importação de extrato bancário com IA
+9. ✅ Moderação automática de comentários com IA
+10. ✅ Interface redesenhada estilo Steve Jobs/Apple
+
+## CREDENCIAIS E CONFIGURAÇÕES
+- Supabase URL: https://remolktowlmqafxmlqko.supabase.co
+- GitHub Repo: https://github.com/andretahara/BoloesTahara
+- Vercel: Conta criada (andre-taharas-projects)
+
+## PENDÊNCIAS
+1. ⏳ Instalar Git no Windows
+2. ⏳ Fazer push do código para GitHub
+3. ⏳ Configurar variáveis de ambiente na Vercel
+4. ⏳ Deploy em produção
+
+================================================================================
+FIM DO HISTÓRICO - Atualizado em 2026-01-16 01:26
+================================================================================
+

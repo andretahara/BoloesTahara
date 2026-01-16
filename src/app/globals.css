@@ -1,0 +1,305 @@
+@import "tailwindcss";
+
+@theme {
+  /* Nova paleta: Cassino de Luxo - Desejo e Urgência */
+  --color-primary: #FFD700;
+  /* Dourado - Riqueza */
+  --color-primary-dark: #B8860B;
+  /* Dourado escuro */
+  --color-secondary: #DC2626;
+  /* Vermelho - Urgência */
+  --color-accent: #15803D;
+  /* Verde dinheiro */
+  --color-background: #0A0A0A;
+  /* Preto luxuoso */
+  --color-foreground: #F9FAFB;
+  --color-muted: #9CA3AF;
+  --color-gold: #FFD700;
+  --color-gold-light: #FBBF24;
+  --color-red-urgent: #DC2626;
+  --color-money-green: #22C55E;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #0A0A0A 0%, #1a0a1a 50%, #0A0A0A 100%);
+  color: #F9FAFB;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+/* Animações */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes gold-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: gold-shimmer 3s ease-in-out infinite;
+}
+
+/* Glassmorphism com bordas douradas */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.glass:hover {
+  border-color: rgba(255, 215, 0, 0.4);
+}
+
+/* Card premium com borda dourada */
+.card-gold {
+  background: linear-gradient(145deg, rgba(255, 215, 0, 0.08) 0%, rgba(0, 0, 0, 0.8) 100%);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
+}
+
+/* Botão Principal - DOURADO LUXUOSO */
+.btn-primary {
+  background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%);
+  color: #0A0A0A;
+  padding: 0.875rem 1.75rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
+}
+
+/* Botão de URGÊNCIA - VERMELHO */
+.btn-urgent {
+  background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+  color: white;
+  padding: 0.875rem 1.75rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-urgent:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(220, 38, 38, 0.6);
+}
+
+/* Botão Secundário */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #F9FAFB;
+  padding: 0.875rem 1.75rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+/* Card de prêmio - DOURADO BRILHANTE */
+.prize-card {
+  background: linear-gradient(145deg, rgba(255, 215, 0, 0.15) 0%, rgba(0, 0, 0, 0.9) 100%);
+  backdrop-filter: blur(16px);
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 0 60px rgba(255, 215, 0, 0.2), inset 0 1px 0 rgba(255, 215, 0, 0.3);
+}
+
+/* Valor do prêmio - gradiente dourado INTENSO */
+.prize-value {
+  font-size: 4rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #FFD700 0%, #FFC107 25%, #FFE066 50%, #FFD700 75%, #B8860B 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  animation: gold-shimmer 3s ease-in-out infinite;
+}
+
+/* Textos com gradiente DOURADO */
+.text-gradient {
+  background: linear-gradient(135deg, #FFD700 0%, #FBBF24 50%, #FFE066 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Texto dourado */
+.text-gold {
+  background: linear-gradient(135deg, #FFD700 0%, #FBBF24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Texto verde dinheiro */
+.text-money {
+  color: #22C55E;
+  font-weight: 700;
+}
+
+/* Texto de urgência */
+.text-urgent {
+  color: #DC2626;
+  font-weight: 700;
+}
+
+.text-muted {
+  color: #9CA3AF;
+}
+
+/* Badge de urgência */
+.badge-urgent {
+  background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+/* Badge dourado */
+.badge-gold {
+  background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%);
+  color: #0A0A0A;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Decorações de fundo */
+.decoration-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.orb-purple {
+  background: #4C1D95;
+}
+
+.orb-gold {
+  background: #FFD700;
+}
+
+.orb-red {
+  background: #DC2626;
+}
+
+/* Cards de feature com borda dourada */
+.feature-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 215, 0, 0.5);
+  box-shadow: 0 20px 40px rgba(255, 215, 0, 0.1);
+}
+
+/* Stats section com destaque dourado */
+.stats-card {
+  background: linear-gradient(145deg, rgba(255, 215, 0, 0.08) 0%, rgba(0, 0, 0, 0.6) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 24px;
+}
+
+/* Barra de progresso dourada */
+.progress-gold {
+  background: linear-gradient(90deg, #FFD700 0%, #FBBF24 50%, #FFD700 100%);
+  background-size: 200% auto;
+  animation: gold-shimmer 2s linear infinite;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .prize-value {
+    font-size: 3rem;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-urgent {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .prize-card {
+    padding: 1.5rem;
+  }
+}
